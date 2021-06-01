@@ -53,7 +53,7 @@ public class test1 {
         }
         Assert.assertTrue(elementovalido);
 
-        driver.navigate().back();
+
         /*WebElement getBtnByText = getBtnByText("Inicia Sesion");
         getBtnByText.click();
 
