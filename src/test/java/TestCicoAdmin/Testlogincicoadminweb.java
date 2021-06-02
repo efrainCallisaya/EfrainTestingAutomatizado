@@ -45,11 +45,11 @@ public class test1 {
         Assert.assertNotNull(searchelemts);
         Assert.assertNotEquals(searchelemts.size(), 0);
 
-        boolean elementovalido = false;
+        boolean elementActividadreciente = false;
         for(WebElement elementos: searchelemts){
             System.out.println("Los elementos son: "+ elementos.getText());
             if (elementos.getText().equals("Actividad reciente")){
-                elementovalido = true;
+                elementActividadreciente = true;
             }
         }
         boolean elementovalidos = false;
