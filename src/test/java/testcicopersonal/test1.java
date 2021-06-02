@@ -52,26 +52,7 @@ public class test1 {
             }
         }
         Assert.assertTrue(elementovalido);
-
-
-        /*WebElement getBtnByText = getBtnByText("Inicia Sesion");
-        getBtnByText.click();
-
-
-        private WebElement getBtnByText (String getBtnByText){
-            List<WebElement> btnList = driver.findElements(By.className("typography"));
-            Assert.assertNotEquals(btnList.size(), 0);
-
-            for (WebElement btn : btnList) {
-                if (btn.getText().equals(getBtnByText)) {
-                    return btn;
-                }
-            }
-
-            Assert.assertFalse(true, "No se encontro el elemento");
-            return null;
-
-        }*/
+        
     }
 }
 
