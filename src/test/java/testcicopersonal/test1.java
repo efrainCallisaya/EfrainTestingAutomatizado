@@ -46,13 +46,13 @@ public class test1 {
         Assert.assertNotEquals(searchelemts.size(), 0);
 
         boolean elementovalido = false;
-        for(WebElement h2: searchelemts){
-            if (h2.getText().equals("Actividad reciente")){
+        for(WebElement elementos: searchelemts){
+            if (elementos.getText().equals("Actividad reciente")){
                 elementovalido = true;
             }
         }
         Assert.assertTrue(elementovalido);
-        
+        //debo seguir con las validaciones
     }
 }
 
