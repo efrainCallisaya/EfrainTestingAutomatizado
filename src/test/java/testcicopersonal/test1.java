@@ -47,13 +47,22 @@ public class test1 {
 
         boolean elementovalido = false;
         for(WebElement elementos: searchelemts){
+            System.out.println("Los elementos son: "+ elementos.getText());
             if (elementos.getText().equals("Actividad reciente")){
                 elementovalido = true;
             }
         }
-        Assert.assertTrue(elementovalido);
+        boolean elementovalidos = false;
+        for(WebElement elementos: searchelemts){
+            if (elementos.getText().equals("Transacciones")){
+                elementovalidos = true;
+            }
+        }
+        Assert.assertTrue(elementovalidos);
         //debo seguir con las validaciones
+        driver.quit();
     }
+
 }
 
 
