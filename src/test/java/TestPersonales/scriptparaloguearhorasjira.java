@@ -1,4 +1,4 @@
-package test1;
+package TestPersonales;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class cicoadminweblogin{
+public class scriptparaloguearhorasjira {
 
 
     WebDriver driver ;

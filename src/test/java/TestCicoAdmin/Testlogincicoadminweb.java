@@ -1,4 +1,4 @@
-package testcicopersonal;
+package TestCicoAdmin;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,12 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class test1 {
+public class Testlogincicoadminweb {
 
 
     WebDriver driver;
@@ -45,21 +46,27 @@ public class test1 {
         Assert.assertNotNull(searchelemts);
         Assert.assertNotEquals(searchelemts.size(), 0);
 
-        boolean elementActividadreciente = false;
+        boolean searchelementActividadreciente = false;
         for(WebElement elementos: searchelemts){
             System.out.println("Los elementos son: "+ elementos.getText());
             if (elementos.getText().equals("Actividad reciente")){
-                elementActividadreciente = true;
+                searchelementActividadreciente = true;
             }
         }
-        boolean elementovalidos = false;
+
+        boolean searchelementTranslation = false;
         for(WebElement elementos: searchelemts){
             if (elementos.getText().equals("Transacciones")){
-                elementovalidos = true;
+                searchelementTranslation = true;
             }
         }
-        Assert.assertTrue(elementovalidos);
-        //debo seguir con las validaciones
+        Assert.assertTrue(searchelementActividadreciente);
+
+        Assert.assertTrue(searchelementTranslation);
+
+    }
+    @AfterMethod
+    public void FinishTest(){
         driver.quit();
     }
 

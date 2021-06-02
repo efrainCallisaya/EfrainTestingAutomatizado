@@ -1,2 +1,5 @@
-package TestCicoAdmin;public class SearchElements {
+package TestCicoAdmin;
+
+public class SearchElements {
+
 }
