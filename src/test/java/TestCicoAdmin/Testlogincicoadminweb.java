@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.nio.file.FileStore;
 import java.util.List;
 
 public class Testlogincicoadminweb {
@@ -31,46 +32,89 @@ public class Testlogincicoadminweb {
     public void test1() throws InterruptedException {
         String siteURL = "https://testing.cicoadmin.goiar.com/#/admin/dashboard";
         driver.get(siteURL);
+        Thread.sleep(3000);
         Assert.assertEquals("https://testing.cicoadmin.goiar.com/#/login", driver.getCurrentUrl());
-        Thread.sleep(3000);
+        WebElement USEName = driver.findElement(By.xpath("//*[@placeholder='Usuario']"));
+        USEName.sendKeys("admin@cico.com");
+        WebElement USEPassword = driver.findElement(By.xpath("//*[@placeholder='Contraseña']"));
+        USEPassword.sendKeys("cicO2020");
+        WebElement bottonsession = driver.findElement(By.xpath("//*[@id=\"root\"]/section/main/div/div/form/div[3]/div"));
+        bottonsession.click();
 
-        driver.findElement(By.xpath("//*[@placeholder='Usuario']")).sendKeys("admin@cico.com");
-        driver.findElement(By.xpath("//*[@placeholder='Contraseña']")).sendKeys("cicO2020");
-        System.out.println("la URL es: " + driver.getCurrentUrl());
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/main/div/div/form/div[3]/div")).click();
-
         Thread.sleep(3000);
-        //Buscamos el elemento de  tags modificar lo que hay en las "" para buscar otro tags
+        //Buscamos el elemento de  tags modificar lo que hay en las "" para buscar otros tags
 
         List<WebElement> searchelemts = driver.findElements(By.tagName("span"));
         Assert.assertNotNull(searchelemts);
         Assert.assertNotEquals(searchelemts.size(), 0);
 
         boolean searchelementActividadreciente = false;
-        for(WebElement elementos: searchelemts){
-            System.out.println("Los elementos son: "+ elementos.getText());
-            if (elementos.getText().equals("Actividad reciente")){
+        for (WebElement elementos : searchelemts) {
+            //System.out.println("los elementos son:" + elementos.getText());
+            if (elementos.getText().equals("Actividad reciente")) {
                 searchelementActividadreciente = true;
             }
         }
 
-        boolean searchelementTranslation = false;
-        for(WebElement elementos: searchelemts){
-            if (elementos.getText().equals("Transacciones")){
-                searchelementTranslation = true;
+        boolean searchelementtransacciones = false;
+        for (WebElement elementos : searchelemts) {
+
+            if (elementos.getText().equals("Transacciones")) {
+                searchelementtransacciones = true;
             }
         }
-        Assert.assertTrue(searchelementActividadreciente);
 
-        Assert.assertTrue(searchelementTranslation);
+        //Lista de elementos Tablero, Logs de proveedores, Configuracion, Usuarios
+        List<WebElement> searchelemtsection = driver.findElements(By.tagName("a"));
+
+        boolean searchelementtheTABLERO =false;
+        for (WebElement listherf :searchelemtsection) {
+            if(listherf.getText().equals("TABLERO")){
+                searchelementtheTABLERO=true;
+            }
+        }
+
+        boolean searchelementtheLogsdeproveedores =false;
+        for (WebElement listherf :searchelemtsection) {
+
+            if(listherf.getText().equals("LOGS DE PROVEEDOR")){
+                searchelementtheLogsdeproveedores=true;
+            }
+        }
+
+        boolean searchelementtheCONFIGURACIÓN =false;
+        for (WebElement listherf :searchelemtsection) {
+            if(listherf.getText().equals("CONFIGURACIÓN")){
+                searchelementtheCONFIGURACIÓN=true;
+            }
+        }
+        boolean searchelementtheUSUARIOS =false;
+        for (WebElement listherf :searchelemtsection) {
+            if(listherf.getText().equals("USUARIOS")){
+                searchelementtheUSUARIOS=true;
+            }
+        }
+
+        //validar la URL
+        //validacion los objetos dentro de las listas.
+
+        Assert.assertTrue(searchelementtheTABLERO);
+        Assert.assertTrue(searchelementtheLogsdeproveedores);
+        Assert.assertTrue(searchelementtheCONFIGURACIÓN);
+        Assert.assertTrue(searchelementtheUSUARIOS);
+        Assert.assertTrue(searchelementActividadreciente);
+        Assert.assertTrue(searchelementtransacciones);
 
     }
     @AfterMethod
     public void FinishTest(){
         driver.quit();
     }
+    }
 
-}
+
+
+
 
 
 
