@@ -60,7 +60,7 @@ public class Airbnb {
 
         boolean encontroElemento = false;
         for (WebElement element: tresHuespedesList){
-            if (element.getText().contains("Más de 300 alojamientos")){
+            if (element.getText().contains("3 huéspedes")){
                 encontroElemento = true;
             }
         }
