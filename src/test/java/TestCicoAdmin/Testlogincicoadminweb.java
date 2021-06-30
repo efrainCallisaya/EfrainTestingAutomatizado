@@ -1,5 +1,4 @@
 package TestCicoAdmin;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +24,7 @@ public class Testlogincicoadminweb {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 15);
+
         driver.manage().window().maximize();
     }
 
@@ -34,6 +34,7 @@ public class Testlogincicoadminweb {
         driver.get(siteURL);
         Thread.sleep(3000);
         Assert.assertEquals("https://testing.cicoadmin.goiar.com/#/login", driver.getCurrentUrl());
+
         WebElement USEName = driver.findElement(By.xpath("//*[@placeholder='Usuario']"));
         USEName.sendKeys("admin@cico.com");
         WebElement USEPassword = driver.findElement(By.xpath("//*[@placeholder='Contraseña']"));
@@ -104,17 +105,12 @@ public class Testlogincicoadminweb {
         Assert.assertTrue(searchelementtheUSUARIOS);
         Assert.assertTrue(searchelementActividadreciente);
         Assert.assertTrue(searchelementtransacciones);
-
     }
+
+
     @AfterMethod
     public void FinishTest(){
         driver.quit();
     }
+
     }
-
-
-
-
-
-
-
